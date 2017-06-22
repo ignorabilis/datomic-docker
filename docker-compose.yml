@@ -1,0 +1,33 @@
+version: "2"
+
+services:
+    datomicdb:
+        #build: datomic-pro-starter
+
+        build:
+            context: ./datomic-pro-starter
+            dockerfile: Dockerfile
+        env_file:
+          - secrets.env
+        ports:
+          - "4336:4336"
+          - "4335:4335"
+          - "4334:4334"
+        volumes:
+          - "/data"
+    waiter:
+        image: aanand/wait
+        links:
+          - datomicdb
+    console:
+        #build: datomic-console
+        build:
+            context: ./datomic-console
+            dockerfile: Dockerfile
+        env_file:
+          - secrets.env
+        ports:
+          - "9000:9000"
+        links:
+          - waiter
+          - datomicdb
