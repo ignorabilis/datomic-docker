@@ -10,7 +10,7 @@ This repository contains a Dockerfile and configuration used for building a prod
 ## Getting Started
 
 1. Pull this repo
-2. Add the `credentials.txt` files in *both* the **datomic-console** and **datomic-pro-starter** folders file adding your Datomic portal username and download key (sorry, but Docker doesn't support symlinking)
+2. Add the `credentials.txt` files in *both* the **datomic-console** and **datomic-pro-starter** folders. The files must contain username:download-key
 3. Add your Datomic Pro Starter Edition license key to the `datomic-pro-starter/config/dev-transactor.properties` file
 4. Go to each folder and build using *docker build -t ignorabilis/datomic-console .* or *docker build -t ignorabilis/datomic-pro-starter .*
 5. Push the resulting docker images
